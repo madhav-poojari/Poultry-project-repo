@@ -7,12 +7,15 @@ import { transports, format } from 'winston';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api');
 
   const config = new DocumentBuilder()
     .setTitle('Poultry Project')
-    .setDescription('The contains a detailed description of the API used in the poultry project')
-    .setVersion('1.0').addBearerAuth()
+    .setDescription(
+      'The contains a detailed description of the API used in the poultry project',
+    )
+    .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document, {
@@ -29,5 +32,3 @@ async function bootstrap() {
   await app.listen(3000);
 }
 bootstrap();
-
-
