@@ -7,7 +7,6 @@ import { AuthModule } from 'src/auth/auth.module';
 import { RolesGuard } from 'src/common/gaurds/roles.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtStrategy } from 'src/auth/jwt.strategy';
-import { LoggerService } from 'src/logging.service';
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: 'User', schema: userSchema }]),
@@ -21,7 +20,7 @@ import { LoggerService } from 'src/logging.service';
       useClass: RolesGuard,
     },
     JwtStrategy,
-    LoggerService
+
   ],
   exports: [UsersService],
 })

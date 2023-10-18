@@ -11,19 +11,5 @@ export class CreateUserDto {
   @ApiProperty()
   @MinLength(6)
   password: string;
-  @IsString()
-  @ApiProperty()
-  readonly lastName: string;
-  @IsNumber()
-  @ApiProperty()
-  readonly phoneNumber: number;
-  @IsString()
-  @ApiProperty()
-  readonly role: string;
-  @IsNumber()
-  @ApiProperty()
-  readonly site: number;
-  @IsNumber()
-  @ApiProperty()
-  readonly region: number;
+
 }

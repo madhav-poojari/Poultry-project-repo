@@ -4,29 +4,21 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
-import { TransactionModule } from './transaction/transaction.module';
-import { ShedModule } from './shed/shed.module';
-import { InventoryModule } from './inventory/inventory.module';
-import { TaskModule } from './task/task.module';
-import { RequestLoggerMiddleware } from './middleware/request-logger.middleware';
-import { LoggerService } from './logging.service';
+
+import { NoteModule } from './note/note.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot(
       'mongodb+srv://junith:9oetA6mMXTEfFlYE@cluster0.lihyu7f.mongodb.net/?retryWrites=true&w=majority',
       {
-        dbName: 'poultryDB',
+        dbName: 'notes',
       },
     ),
     UsersModule,
-    TransactionModule,
-    ShedModule,
-    InventoryModule,
-    TaskModule,
+    NoteModule,
   ],
   controllers: [AppController],
-  providers: [AppService, LoggerService],
-  exports: [LoggerService],
+  providers: [AppService],
 })
 export class AppModule {}
